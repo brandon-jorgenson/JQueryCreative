@@ -1,0 +1,26 @@
+<html>
+<head>
+<title>Daniel and Brandon JQuery Project</title>
+<script
+  src="http://code.jquery.com/jquery-3.2.1.min.js">
+</script>
+<script>
+$(document).ready(function() {
+      var myurl = 
+    $.ajax({
+       url : myurl,
+      crossDomain: true,
+      dataType : "json",
+      success : function(parsed_json) {
+      console.log(parsed_json);
+      
+    }
+    });
+     
+});
+</script>
+</head>
+<body>
+
+</body>
+</html>
