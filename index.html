@@ -7,20 +7,32 @@
 </script>
 <script>
 $(document).ready(function() {
-     var myurl = "http://numbersapi.com/random?json";
+    $("#numButton").click(function(e) {
+      var value = $("#numField").val();
+      console.log(value);
+      e.preventDefault();
+     var myurl = "http://numbersapi.com/" + value + "?json";
     $.ajax({
        url : myurl,
       crossDomain: true,
       dataType : "json",
       success : function(parsed_json) {
       console.log(parsed_json);
+      var info = parsed_json['text'];
+      $("#trivia").text(info);
     }
     });
-     
+    });
 });
 </script>
 </head>
 <body>
+<form>
 
+Enter a number to see a random fact: <input type="text" id="numField" value="">
+<p>Hint: Try 239 a few times :)</p>
+<input id="numButton" type="submit" value="Submit">
+</form>
+<p id ="trivia"></p>
 </body>
 </html>
