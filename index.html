@@ -1,15 +1,19 @@
 <html>
     
 <head>
+  <Link rel="stylesheet" type="text/css" href="main.css">
 <title>Daniel and Brandon JQuery Project</title>
 <script
   src="http://code.jquery.com/jquery-3.2.1.min.js">
 </script>
 <script>
+/* global $ */
+//TODO
+//Add year fact generation (or date)
+//Add behavior for not found
 $(document).ready(function() {
     $("#numButton").click(function(e) {
       var value = $("#numField").val();
-      console.log(value);
       e.preventDefault();
      var myurl = "http://numbersapi.com/" + value + "?json";
     $.ajax({
@@ -17,22 +21,85 @@ $(document).ready(function() {
       crossDomain: true,
       dataType : "json",
       success : function(parsed_json) {
-      console.log(parsed_json);
       var info = parsed_json['text'];
       $("#trivia").text(info);
     }
     });
     });
+    $("#dateButton").click(function(e) {
+        var value = $("#dateField").val();
+        e.preventDefault();
+        var date = value.split('/');
+        var month = date[0];
+        var day = date[1];
+        var myurl = "http://numbersapi.com/" + month + "/" + day + "/date?json";
+        $.ajax({
+        url : myurl,
+        crossDomain: true,
+        dataType : "json",
+        success : function(parsed_json) {
+      var info = parsed_json['text'];
+      $("#dateTrivia").text(info);
+          }
+        });
+    });
+    $("#yearButton").click(function(e) {
+      var value = $("#yearField").val();
+      e.preventDefault();
+      var myurl = "http://numbersapi.com/" + value + "/year?json";
+      $.ajax({
+        url : myurl,
+        crossDomain : true,
+        dataType : "json",
+        success : function(parsed_json) {
+          var info = parsed_json['text'];
+          $("#yearTrivia").text(info);
+        }
+      });
+    });
+    $("#randomButton").click(function(e) {
+       e.preventDefault();
+       $.ajax({
+         url : "http://numbersapi.com/random/trivia?json",
+         crossDomain : true,
+         dataType : "json",
+         success : function(parsed_json) {
+           var info = parsed_json['text'];
+           $("#randomFact").text(info);
+         }
+       });
+    });
 });
 </script>
 </head>
 <body>
+  <div class ="row">
+    <div class ="column">
 <form>
-
 Enter a number to see a random fact: <input type="text" id="numField" value="">
 <p>Hint: Try 239 a few times :)</p>
 <input id="numButton" type="submit" value="Submit">
 </form>
 <p id ="trivia"></p>
+<form>
+  Enter a month and day (MM/DD): <input type="text" id="dateField" value="">
+  <br>
+  <input id="dateButton" type="submit" value="Submit">
+</form>
+<p id ="dateTrivia"></p>
+</div>
+<div class ="column">
+<form>
+  Enter a year: <input type ="text" id="yearField" value="">
+  <br>
+  <input id= "yearButton" type = "submit" value = "Submit">
+</form>
+<p id ="yearTrivia"></p>
+<form>
+  Get a completely random number fact! <input id = "randomButton" type="submit" value ="Submit">
+</form>
+<p id="randomFact"></p>
+</div>
+</div>
 </body>
 </html>
