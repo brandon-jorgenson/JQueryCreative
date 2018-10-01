@@ -8,9 +8,6 @@
 </script>
 <script>
 /* global $ */
-//TODO
-//Add year fact generation (or date)
-//Add behavior for not found
 $(document).ready(function() {
     $("#numButton").click(function(e) {
       var value = $("#numField").val();
@@ -90,7 +87,7 @@ Enter a number to see a random fact: <input type="text" id="numField" value="">
 </div>
 <div class ="column">
 <form>
-  Enter a year: <input type ="text" id="yearField" value="">
+  Enter a year (negative years for BC): <input type ="text" id="yearField" value="">
   <br>
   <input id= "yearButton" type = "submit" value = "Submit">
 </form>
