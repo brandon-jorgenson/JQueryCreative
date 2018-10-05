@@ -1,8 +1,9 @@
+<!DOCTYPE html>
 <html>
     
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <Link rel="stylesheet" type="text/css" href="main.css">
+  <link rel="stylesheet" type="text/css" href="main.css">
 <title>Daniel and Brandon JQuery Project</title>
 <script
   src="http://code.jquery.com/jquery-3.2.1.min.js">
@@ -68,32 +69,46 @@ $(document).ready(function() {
        });
     });
 });
+
 </script>
+<div class="center">
+        <h1>Number Facts</h1>
+</div>
 </head>
 <body>
   <div class ="row">
     <div class ="column">
-<form>
+<div class="block">
+    <form>
 Enter a number to see a random fact: <input type="text" id="numField" value="">
 <p>Hint: Try 239 a few times :)</p>
 <input id="numButton" type="submit" value="Submit">
 </form>
 <p id ="trivia"></p>
-<form>
+
+</div>
+</br>
+<div class="block">
+    <form>
   Enter a month and day (MM/DD): <input type="text" id="dateField" value="">
   <br>
   <input id="dateButton" type="submit" value="Submit">
 </form>
 <p id ="dateTrivia"></p>
 </div>
+</div>
 <div class ="column">
-<form>
+    <div class="block">
+        <form>
   Enter a year (negative years for BC): <input type ="text" id="yearField" value="">
   <br>
   <input id= "yearButton" type = "submit" value = "Submit">
 </form>
 <p id ="yearTrivia"></p>
-<form>
+    </div>
+    </br>
+    <div class="block">
+        <form>
   Get a completely random number fact! <input id = "randomButton" type="submit" value ="Submit">
 </form>
 <p id="randomFact"></p>
